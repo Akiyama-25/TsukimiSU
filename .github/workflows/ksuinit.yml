@@ -33,6 +33,7 @@ jobs:
     - name: Build ksuinit
       env:
         ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+        CARGO_NET_GIT_FETCH_WITH_CLI: true
       run: |
         source .github/scripts/setup-rust-build.sh aarch64-linux-android 26
         BUILTINS="$($CLANG_PATH --print-resource-dir)/lib/linux/libclang_rt.builtins-aarch64-android.a"
@@ -49,6 +50,7 @@ jobs:
     - name: Build ksuinit x64
       env:
         ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+        CARGO_NET_GIT_FETCH_WITH_CLI: true
       run: |
         source .github/scripts/setup-rust-build.sh x86_64-linux-android 26
         BUILTINS="$($CLANG_PATH --print-resource-dir)/lib/linux/libclang_rt.builtins-x86_64-android.a"
